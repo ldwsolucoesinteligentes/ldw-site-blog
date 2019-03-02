@@ -3,7 +3,7 @@ title: Fluent Validation .NET - Implementando com Typescript
 description: Exemplos da biblioteca FluentValidaton .NET escritos em Typescript
 layout: post
 category: blog
-date: '2019-03-01 17:00:00'
+date: '2019-03-02 22:00:00'
 tag:
     - typescript
     - javascript
