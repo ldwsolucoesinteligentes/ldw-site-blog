@@ -8,4 +8,4 @@
 >
 > Email: [lekodeveloperweb@hotmail.com](maito:lekodeveloperweb@hotmail.com)
 >
-> Site: [https://ldwsolucoesinteligentes.com.br](https://ldwsolucoesinteligentes.com.br){:target="\_blank"}
+> Site: <a href="https://ldwsolucoesinteligentes.com.br" target="_blank">https://ldwsolucoesinteligentes.com.br</a>
