@@ -5,7 +5,7 @@ layout: page
 
 ![Profile Image]({{ site.url }}/{{ site.picture }})
 
-Eu sou **Alex Leko** (**L**eko**D**eveloper**W**), desenvolvedor Full Stack; Geek, pai da Louyse e marido da Jéssica, carioca da gema, desde 2012 no mercado desenvolvimento web e mobile. Formado em Análise de Sistemas, MCSD - Microsoft Solution Developer, atualmente a frente da consultoria **LDW Soluções Inteligentes**, estou sempre pronto a encarar novos desafios.
+Eu sou **Alex Leko** (**L**eko**D**eveloper**W**eb), desenvolvedor Full Stack; Geek, pai da Louyse e marido da Jéssica, carioca da gema, desde 2012 no mercado desenvolvimento web e mobile. Formado em Análise de Sistemas, MCSD - Microsoft Solution Developer, atualmente a frente da consultoria **LDW Soluções Inteligentes**, estou sempre pronto a encarar novos desafios.
 
 Meu perfil completo no [LinkedIn](https://www.linkedin.com/in/lekodeveloperweb/){:target="\_blank"}
 
@@ -29,8 +29,3 @@ Meu perfil completo no [LinkedIn](https://www.linkedin.com/in/lekodeveloperweb/)
 	<li>Scrum e Kanban</li>
 	<li>Docker e Continuous Integration</li>
 </ul>
-
-## Projects
-
--   [Clube do Advogado](http://www.clubedoadvogado.adv.br/){:target="\_blank"}
--   [Plah Redes Sociais](http://www.plah.com.br/){:target="\_blank"}
