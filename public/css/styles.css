@@ -1,0 +1,139 @@
+.image-profile {
+  float: left;
+  margin-right: 2%;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.post-tags {
+  float: left;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: #ac4142;
+  border-radius: 5px;
+  padding: 0 8px;
+  margin: 0 5px 20px 5px;
+  display: block;
+  font-size: 0.7em;
+}
+
+.reading-time {
+  color: #9a9a9a;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.caption {
+  font-size: 0.6em;
+  margin-bottom: 3%;
+}
+
+.share {
+  float: right;
+  width: 40%;
+  display: inline;
+  text-align: right;
+  position: relative;
+  top: -10px;
+}
+@media only screen and (max-width: 400px) {
+  .share {
+    width: 100%;
+    display: block;
+    top: 0;
+    text-align: left;
+    float: none;
+    margin-top: 5px;
+  }
+}
+@media only screen and (min-width: 400px) and (max-width: 1050px) {
+  .share {
+    width: 100%;
+    display: block;
+    top: 0;
+    text-align: left;
+    float: none;
+    margin-top: 5px;
+  }
+}
+.share > .twitter,
+.share > .facebook,
+.share > .google-plus,
+.share > .linkedin,
+.share > .reddit {
+  display: inline;
+  vertical-align: middle;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 3px;
+  margin-left: 5px;
+  text-decoration: none;
+}
+@media only screen and (max-width: 400px) {
+  .share > .twitter,
+  .share > .facebook,
+  .share > .google-plus,
+  .share > .linkedin,
+  .share > .reddit {
+    margin: 0 5px 10px 0;
+  }
+}
+@media only screen and (min-width: 400px) and (max-width: 1050px) {
+  .share > .twitter,
+  .share > .facebook,
+  .share > .google-plus,
+  .share > .linkedin,
+  .share > .reddit {
+    margin: 0 5px 10px 0;
+  }
+}
+.share > .twitter {
+  background: #4fafed;
+}
+.share > .facebook {
+  background: #4361b3;
+}
+.share > .google-plus {
+  background: #dd4b39;
+}
+.share > .linkedin {
+  background: #0077b5;
+}
+.share > .reddit {
+  background: #ff4500;
+}
+.share svg {
+  fill: #fff;
+  position: relative;
+  top: 3px;
+  margin: 0 -1px 0 4px;
+  display: inherit;
+}
+
+.social-links > .link {
+  margin: 0;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  height: 35px;
+  width: 35px;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+.icon {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  fill: #000;
+  text-align: center;
+  color: #000;
+  margin: 7px auto;
+}

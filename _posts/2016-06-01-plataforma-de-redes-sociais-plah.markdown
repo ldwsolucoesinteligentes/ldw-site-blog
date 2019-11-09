@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ':star: Plataforma de Redes Sociais Plah!'
+title: 'Plataforma de Redes Sociais Plah!'
 category: project
 hidden: true
 projects: true

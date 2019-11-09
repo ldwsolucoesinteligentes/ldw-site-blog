@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ':star: Clube do Advogado, Sistema Hórus'
+title: 'Clube do Advogado, Sistema Hórus'
 category: project
 hidden: true
 projects: true

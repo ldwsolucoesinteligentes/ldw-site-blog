@@ -1,11 +1,16 @@
 ---
 layout: post
-title: ':star: Aplicativo Motel Comanche'
+title: 'Aplicativo Motel Comanche'
 category: project
-hidden: true
 projects: true
+hidden: true
 tag:
     - ionic
+    - typescript
+    - angular
+    - mobile
+    - android
+    - ios
 author: alexleko
 externalLink: https://play.google.com/store/apps/details?id=br.com.motelcomanche.gerarcupom
 description: Aplicativo criado com Ionic 3 e angular 4

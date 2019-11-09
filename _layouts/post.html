@@ -1,49 +1,57 @@
 ---
-layout: page
+layout: default
 ---
 
-{% if page.image and page.headerImage %}
-    <img class="title-image" src="{{ page.image }}" alt="{{ page.title }}">
-{% endif %}
+<div class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <span class="post-date">
+    <time datetime="{{ page.date | date:'%d-%m-%Y' }}">{{ page.date | date: "%A. %B %d, %Y" }}</time>
+      {% if site.read_time %} - {% include read-time.html %}{% endif %}
+  </span>
+  {% include share.html %}
+  <div class="clearfix"></div>
+  {% for tags in page.tags %}
+  <span class="post-tags"> {{ tags | downcase }} </span>
+  {% endfor %}
+  <div class="clearfix"></div>
+  {{ content }}
+</div>
 
-<h1 class="title">{{ page.title }}</h1>
+{% include share.html %}
+<div class="clearfix"></div>
 
-<span class="date">
-    <time datetime="{{ page.date | date:"%d-%m-%Y" }}">{{ page.date | date: "%A. %B %d, %Y" }}</time>
-    {% if site.read-time %} - {% include read-time.html %}{% endif %}
-</span>
-
-{% if site.show-tags %}
-    <div class="post-tags">
-        {% for tag in page.tags %}
-            <a class="item" href="{{ site.url }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    {% for post in site.related_posts limit:3 %}
+      {%for post_tag in post.tags%}
+        {%for page_tag in page.tags%}
+          {%assign p1 = post_tag | downcase%}
+          {%assign p2 = page_tag | downcase%}
+          {%if p1 == p2 and page.category == post.category %}
+            <li>
+              <h3>
+                <a href="{{ post.url }}">
+                  {{ post.title }}
+                  <small>{{ post.date | date_to_string }}</small>
+                </a>
+              </h3>
+            </li>
+          {% endif %}
         {% endfor %}
-    </div>
-{% endif %}
-
-{{content}}
-
-{% if site.post-advance-links contains page.category %}
-    <div class="blog-navigation">
-        {% if page.previous.hidden == false and page.previous.url %}
-            <a class="prev" href="{{ site.url }}{{ page.previous.url }}">&laquo; {{ page.previous.title }}</a>
-        {% else %}
-            <a class="prev"></a>
-        {% endif %}
-        {% if page.next.hidden == false and page.next.url %}
-            <a class="next" href="{{ site.url }}{{ page.next.url }}">{{ page.next.title }} &raquo;</a>
-        {% endif %}
-    </div>
-{% endif %}
-
-{% if site.related %}
-    {% include related.html %}
-{% endif %}
-
-{% if site.show-author %}
-    {% include author.html %}
-{% endif %}
-
+      {% endfor %}
+    {% endfor %}
+  </ul>
+</div>
 {% if site.disqus.categories contains page.category %}
     {% include disqus.html %}
 {% endif %}
+
+<script>
+  window.onload = () => {
+    const el$ = document.querySelector(".related");
+    if(!el$.lastElementChild.firstElementChild) {
+      el$.style.display = "none";
+    }
+  }
+</script>

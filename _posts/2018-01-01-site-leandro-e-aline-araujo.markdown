@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ':star: Site Leandro e Aline Araújo'
+title: 'Site Leandro e Aline Araújo'
 category: project
 hidden: true
 projects: true

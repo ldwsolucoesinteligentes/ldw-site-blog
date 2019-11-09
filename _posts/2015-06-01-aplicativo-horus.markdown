@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ':star: Aplicativo Hórus, Escritório de Advogacia na palma da mão'
+title: 'Aplicativo Hórus, Escritório de Advogacia na palma da mão'
 category: project
 hidden: true
 projects: true

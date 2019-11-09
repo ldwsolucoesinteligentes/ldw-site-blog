@@ -2,7 +2,6 @@
 title: Trocando de carreira. Como saí da área comercial e me tornei um desenvolvedor.
 description: Um pouco da minha história, de como troquei de gerente comercial para estagiário de desenvolvimento e hoje sou Full Stack Developer Sr.
 star: true
-hidden: true
 tag:
     - vida
     - carreira
@@ -29,10 +28,10 @@ E como não poderia deixar de fazer a tão merecida homenagem, o desejado sistem
 Foi ali meu primeiro contatos com **Scrum**, sim, como falei, Léo já vinha "imputando" as boas praticas de projeto que havia aprendido, olha a foto do nosso primeiro quadro Kanban, com direito a Burn Down e tudo 😉
 Obrigado mais uma vez meu amigo, por eternizar esse momento. Foto tirada com o grande guerreiro, Nokia C3.
 
-<div class="text-center">
-		<img src="/assets/images/posts/louyse-automacao-comercial-1.jpg" alt="Foto do quadro Kanban, projeto Louyse Automação Comercial v1.0, com Burn down e tarefas, 14 de fevereiro de 2012">
-	<figcaption class="caption">Foto do quadro Kanban, projeto Louyse Automação Comercial v1.0, com Burn down e tarefas, 14 de fevereiro de 2012</figcaption>
-</div>
+{%assign alt = "Foto do quadro Kanban, projeto Louyse Automação Comercial v1.0, com Burn down e tarefas, 14 de fevereiro de 2012"%}
+![{{alt}}]({{site.baseurl}}public/images/posts/louyse-automacao-comercial-1.jpg "{{alt}}")
+{{alt}}
+{:.caption}
 
 A partir daí, muita coisa mudou, melhoramos realmente o processo de vendas, causamos algumas intrigas, ao sermos descobertos pelo gerente de desenvolvimento, _apesar dele não entender, no inicio, do que se tratava aquele quadro cheio de post its e gráficos_, o sistema deu certo e ele começou a se preocupar como seria a manutenção do mesmo, caso fosse preciso. Usávamos a rede para armazenar o "código fonte" e compartilhar o "banco de dados", nos perdoem pois éramos iniciantes, em contrapartida, o diretor ficou satisfeito com a eficiência na geração de relatórios de vendas, mesmo sem saber até hoje, como eram gerados tão rápidos e com tão boa aparência. Conseguimos unificar o telemarketing, a assistente comercial e o marketing, melhorando o desempenho das minhas visitas comerciais e acabando com a paz do galera de desenvolvimento de verdade 😂 que alias, não comentei que trabalhavam com Delphi 4 se não me falha a memória, com banco de dados "Paradox", que sem querer, descobrimos que dava pra importar todo ele no Access, top da segurança hein 😝.
 

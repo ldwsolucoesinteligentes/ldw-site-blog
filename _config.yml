@@ -1,9 +1,11 @@
-# SEO
-title: LDW Soluções Inteligentes
-description: >-
-    O melhor do desenvolvimento web, mobile e gerenciamento de mídias sociais.
-twitter:
-    username: LekoDeveloper
+# Setup
+title: LDW
+tagline: 'Alex Leko'
+description: 'O melhor do desenvolvimento web, mobile e gerenciamento de mídias sociais. <a href="mailto:lekodeveloperweb@hotmail.com" target="_blank">@alexleko</a>'
+url: http://ldwsolucoesinteligentes.com.br
+baseurl: /
+read_time: true
+
 social:
     name: Alex Leko
     links:
@@ -12,15 +14,17 @@ social:
         - https://www.linkedin.com/in/lekodeveloperweb
         - https://github.com/lekowebdeveloper
 lang: pt_BR
+
 authors:
     alexleko:
         name: Alex Leko
         bio: Desenvolvedor Web, Apaixonado por tecnologia. Trabalhando com as linguagens C#, NodeJS, Python, GoLang e frameworks Angular, VueJS e Reactjs.
         external-image: false
-        picture: assets/images/profile.jpg
+        picture: public/images/profile.jpg
         twitter: LekoDeveloper
 
-timezone: America/Sao_Paulo
+paginate: 5
+paginate_path: '/blog/page:num/'
 
 # post description
 share_description: Um blog com o melhor do desenvolvimento web, mobile, e gerenciamento de mídias sociais.
@@ -28,28 +32,19 @@ share_description: Um blog com o melhor do desenvolvimento web, mobile, e gerenc
 # if it's an external image, update below for true
 # better with square images
 external-image: false
-company_logo: assets/images/favicon/icon.png
-picture: assets/images/profile.jpg
+company_logo: public/images/favicon/icon.png
+picture: public/images/profile.jpg
 
 # If you want to include your resume, set to true
 # and specify source (external or local).
-resume: true
-resume-external: true
-resume-url: https://www.linkedin.com/in/lekodeveloperweb/
+resume_url: https://www.linkedin.com/in/lekodeveloperweb/
 
 url: https://ldwsolucoesinteligentes.com.br
 
 permalink: /blog/:title/
 
 # To enable google analytics, supply your token below
-analytics-google: 'UA-135069212-1'
-
-# To enable piwik tracking, supply your url & site ID below
-# analytics-piwik-url: 'piwik.my-host.com'
-# analytics-piwik-id: 1
-
-# not build future post
-future: false
+analytics_google: 'UA-135069212-1'
 
 # if you don't want comments in your posts, leave categories empty
 disqus:
@@ -57,72 +52,49 @@ disqus:
     categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
+twitter: LekoDeveloper
+twitter_icon: public/images/icons/twitter.png
 facebook: ldwsolucoesinteligentes
-# google: mygoogle
+facebook_icon: public/images/icons/facebook.png
 instagram: ldwsolucoesinteligentes
-# pinterest: mypinterest
 linkedin: lekodeveloperweb
-# youtube: myyoutube
+linkedin_icon: public/images/icons/linkedin.png
 spotify: lekodeveloperweb
 github: ldwsolucoesinteligentes
 gitlab: lekodeveloperweb
-# lastfm: mylastfm
-# stackoverflow: 7044681/mystackoverflow
-# quora: userquora
 reddit: lekodeveloperweb
 medium: lekodeveloperweb
-# vimeo: myvimeo
-# lanyrd: mylanyrd
 email: lekodeveloperweb@hotmail.com
 
-# do you want a larger site? change the option below
-# options: [normal, large] | default: normal
-# normal = 560px / large = 810px
-width: large
 
-# if you don't need pagination, comment the *paginate* configs below
-# paginate: 5
-# paginate_path: 'blog/:num/'
+# Custom vars
+version: 2.0.0
 
-# if you don't need projects, comment the *projects* configs below
-projects: true
+github:
+  repo: https://github.com/ldwsolucoesinteligentes
 
-# if you don't need "about" or "blog", comment them out below
-about: true
-blog: true
-
-# do you want to show the "read time" of the posts?
-read-time: true
-
-# do you want to show the "tags" inside the posts?
-show-tags: true
-
-# related posts inside a post?
-related: true
-
-# Display links for next and previous posts for the specified categories
-post-advance-links: [blog]
-
-# show author block at the end of a post ?
-show-author: true
-
-# do you want some animations?
-animation: true
-
+# Build settings
 plugins:
-    - jekyll-seo-tag
-    - jekyll-gist
-    - jekyll-feed
-    - jemoji
-    - jekyll-admin
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
 
-jekyll-mentions:
-    base_url: https://github.com
-
-compress_html:
-    ignore:
-        envs:
-            - development
-            - stage
-
-exclude: ['travis.sh', 'Rakefile', 'README.md', 'Gemfile', 'Gemfile.lock', 'FAQ.md', 'node_modules']
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
