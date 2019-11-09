@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>LDW</title>
+ <link href="https://ldwsolucoesinteligentes.com.br/atom.xml" rel="self"/>
+ <link href="https://ldwsolucoesinteligentes.com.br/"/>
+ <updated>2019-11-09T17:25:17-03:00</updated>
+ <id>https://ldwsolucoesinteligentes.com.br</id>
+ <author>
+   <name></name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Fluent Validation .NET - Implementando com Typescript</title>
+   <link href="https://ldwsolucoesinteligentes.com.br/blog/fluent-validation-implementando-com-typescript/"/>
+   <updated>2019-04-01T22:00:00-03:00</updated>
+   <id>https://ldwsolucoesinteligentes.com.br/blog/fluent-validation-implementando-com-typescript</id>
+   <content type="html">&lt;p&gt;Não sei se todos sabem, mas iniciei a minha carreira de programação com a &lt;strong&gt;linguagem C#&lt;/strong&gt;, da Microsoft, a qual sou apaixonado até hoje, apesar de também programar em outras linguagens. E na comunidade .NET em geral, existe uma biblioteca muito conhecida para validação, é a:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://github.com/JeremySkinner/FluentValidation&quot;&gt;FluentValidation&lt;/a&gt; - &lt;em&gt;A popular .NET validation for building strongly-typed validation rules.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Costumo usá-la bastante em meus projetos, é de grande valia para validações robustas e fáceis de implementar, e como nos últimos anos, tenho feito bastante projetos no front end, com &lt;strong&gt;Angular&lt;/strong&gt;, &lt;strong&gt;ReactJS&lt;/strong&gt; e &lt;strong&gt;VueJS&lt;/strong&gt;, como a maioria dos desenvolvedores que iniciaram carreira no back end, nunca gostei da liberdade que o &lt;strong&gt;Javascript&lt;/strong&gt; me dá, sem uma tipagem estática, isso me fez, adepto de &lt;strong&gt;Typescript&lt;/strong&gt; desde os primórdios, e essa semana, &lt;em&gt;até porque, só consegui criar este blog a pouco tempo&lt;/em&gt;, decidi mostrar como uso os conceitos do &lt;strong&gt;Fluent Validation&lt;/strong&gt; com typescript.&lt;/p&gt;
+
+&lt;p&gt;Para os exemplos, usarei um projeto simples, do tipo &lt;em&gt;Console Application&lt;/em&gt;, com &lt;strong&gt;NodeJS&lt;/strong&gt; e o pacote do npm typescript. Primeiro criaremos uma pasta de trabalho (&lt;em&gt;Workspace&lt;/em&gt;) chamada: &lt;code&gt;fluent-validation-typescript&lt;/code&gt;
+Eu uso bastante a linha de comando (&lt;em&gt;command line&lt;/em&gt;), mas fique a vontade para usar a interface gráfica do seu sistema operacional, eu estou usando para escrever este post, &lt;strong&gt;Linux&lt;/strong&gt; a distro &lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora 29&lt;/a&gt;, caso queira seguir a risca os meus passos, abra o terminal e execute o seguinte comando: &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdir fluent-validation-typescript&lt;/code&gt;, para criar a pasta de trabalho (&lt;em&gt;Workspace&lt;/em&gt;), navegue até a mesmo com o comando: &lt;code class=&quot;highlighter-rouge&quot;&gt;cd fluent-validation-typescript&lt;/code&gt;, e assim então poderemos iniciar os trabalhos.&lt;/p&gt;
+
+&lt;p&gt;Para este exemplo, estou usando também o &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Microsoft Visual Studio Code (VsCode)&lt;/a&gt;, um excelente editor de texto, atualmente o mais utilizado entre os desenvolvedores, sinta-se a vontade para experimentá-lo. Quero informar, que para executar, alguns comandos a seguir, é necessário a instalação prévia do &lt;a href=&quot;https://nodejs.org&quot;&gt;NodeJS&lt;/a&gt;. Voltando para nossa linha de comando (&lt;em&gt;command line&lt;/em&gt;), execute os seguintes comandos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm init -y&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Para iniciar um ambiente &lt;strong&gt;NodeJS&lt;/strong&gt; de desenvolvimento.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm i -D typescript&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Instala o pacote &lt;strong&gt;Typescript&lt;/strong&gt;, através do gerenciador de pacotes do &lt;strong&gt;NodeJS&lt;/strong&gt;, &lt;em&gt;NPM&lt;/em&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules/.bin/tsc --init&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Este comando, criará um arquivo de configuração padrão para a compilação do &lt;strong&gt;Typescript&lt;/strong&gt; para &lt;strong&gt;Javascript&lt;/strong&gt;, tentarei fazer alguns posts no futuro, mais introdutórios sobre o assunto.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Caso tenha optado por usar o &lt;strong&gt;VSCode&lt;/strong&gt;, como eu, execute o seguinte comando: &lt;code class=&quot;highlighter-rouge&quot;&gt;code .&lt;/code&gt;, isso fará com que abra-o em nossa pasta de trabalho.
+Crie um arquivo chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;index.ts&lt;/code&gt; e uma pasta chamada: &lt;code class=&quot;highlighter-rouge&quot;&gt;bin&lt;/code&gt; com um arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;index.ts&lt;/code&gt; dentro. Sua estrutura estará mais ou menos assim:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;fluent-validation-typescript
+....bin
+.......index.ts
+....index.ts
+....package.json
+....tsconfig.json&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finalmente, vamos ao código. 😁
+Começaremos com as classes &lt;code class=&quot;highlighter-rouge&quot;&gt;ValidationFailure&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;ValidationResult&lt;/code&gt;, responsáveis por padronizar os retornos, crie dois arquivos na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;bin&lt;/code&gt; com os nomes: &lt;code class=&quot;highlighter-rouge&quot;&gt;validation-failure.ts&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;validation-result.ts&lt;/code&gt;. Sua nova estrutura se parecerá com está:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-raw&quot; data-lang=&quot;raw&quot;&gt;fluent-validation-typescript
+....bin
+.......index.ts
+.......validation-failure.ts
+.......validation-result.ts
+....index.ts
+....package.json
+....tsconfig.json&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;validation-failure.ts&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-ts highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationFailure&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;customState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;severity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Severity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Severity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;errorCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;formattedMessageArguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FormattedMessagePlaceholderValues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resourceName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;propertyName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;errorMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;attemptedValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;any&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;errorMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;validation-result&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-ts highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationFailure&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./validation-failure&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationResult&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;IsValid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;failures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationFailure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;failures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_errors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;failures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_errors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_ruleSetsExecuted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;readonly&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;_errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationFailure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationFailure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;_ruleSetsExecuted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ruleSetsExecuted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_ruleSetsExecuted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kr&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;errorMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Entendendo de uma vez por todas a diferença entre slice e splice em arrays javascript, um guia definitivo.</title>
+   <link href="https://ldwsolucoesinteligentes.com.br/blog/entendendo-de-uma-vez-por-todas-a-diferenca-entre-slice-e-splice-em-arrays-javascript-um-guia-definitivo/"/>
+   <updated>2019-03-02T14:00:00-03:00</updated>
+   <id>https://ldwsolucoesinteligentes.com.br/blog/entendendo-de-uma-vez-por-todas-a-diferenca-entre-slice-e-splice-em-arrays-javascript-um-guia-definitivo</id>
+   <content type="html">&lt;p&gt;Fala galera!!! Olha eu aqui de novo. O assunto que vamos discutir hoje, não é novo, e nem de longe complexo, mas ainda causa bastante confusão. Eu mesmo no inicio me confundia bastante, e quero hoje, te ajudar a nunca mais errar a diferença entre &lt;code class=&quot;highlighter-rouge&quot;&gt;slice&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;splice&lt;/code&gt;, creio que a própria entonação da pronuncia já faz com que nossa mente se engane. Traduzindo ao pé da letra, &lt;strong&gt;Slice&lt;/strong&gt; é uma &lt;em&gt;fatia&lt;/em&gt;, um &lt;em&gt;pedaço&lt;/em&gt; de algo, já &lt;strong&gt;Splice&lt;/strong&gt; é &lt;em&gt;emenda&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tendo isso em mente, vamos contar uma história que defina de um jeito que não vamos esquecer:&lt;/p&gt;
+
+&lt;h2 id=&quot;slice&quot;&gt;Slice&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Imagine três garotos, Pedro, Tiago e João, olhando pela vitrine de uma confeitaria uma torna gigante, imaginou?. Então acompanha o diálogo:&lt;/p&gt;
+
+  &lt;p&gt;Pedro diz: - Eu vou querer o primeiro &lt;em&gt;slice&lt;/em&gt;!&lt;/p&gt;
+
+  &lt;p&gt;Tiago - Eu prefiro o &lt;em&gt;slice&lt;/em&gt; do meio, tem mais recheio.&lt;/p&gt;
+
+  &lt;p&gt;João - Então o resto é meu!😝&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vejamos isso na pratica.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boloInteiro&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oPrimeiroPedacoEhMeu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boloInteiro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;oPrimeiroPedacoEhMeu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// resultado: [1]&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prefiroDoMeio&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boloInteiro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prefiroDoMeio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// resultado: [5]&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oRestoEhMeu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boloInteiro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;oRestoEhMeu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// resultado: [9, 10]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Como os garotos estavam apenas imaginando, mesmo depois de distribuir, todas essas slices,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// o bolo ainda tá inteirinho&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boloInteiro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// resultado: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Melhor que isso, só dois disso né.🤓 Creio que essa é a maneira mais fácil de entender, trazendo coisas do dia a dia para a programação, à lá orientação a objetos. E se mesmo assim não conseguiu entender, deixa o seu comentário aí que tento te ajudar a entender de uma vez por todas.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Nota técnica&lt;/strong&gt;:&lt;/p&gt;
+
+  &lt;p&gt;O método slice() retorna uma cópia de parte de um array a partir de um subarray
+criado entre as posições begin e end (end não é necessário) de um array original.
+O Array original não é modificado.
+Assinatura:&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  arr.slice([begin[, end]])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;p&gt;Traduzindo:&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  bolo.pedacos(posição da faca imaginaria, quantos pedaços corta)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/slice&quot; targe=&quot;\_blank&quot;&gt;Array.prototype.slice()&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;splice&quot;&gt;Splice&lt;/h2&gt;
+
+&lt;p&gt;Esse eu acho ainda mais interessante, para trazer ao mundo real, continuaremos com o bolo, mas dessa vez, um feito pela vovó, quer mais histórias? (Siiiiiiim!!!!)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Era uma daquelas tarde de domingo, a vovó fez um bolo de fubá, e deixou cortadinho e esfriando em cima da mesa.
+Seu neto, Pedro, malandro, nem esperou esfriar, foi lá e pegou dois pedaços, guloso! Enquanto ainda comia o primeiro,
+sua avó o pegou no flagra, e disse: - larga de ser olho grande menino! Pode &lt;strong&gt;&lt;em&gt;Splice&lt;/em&gt;&lt;/strong&gt; um desses pedaços no lugar. (forte essa hein 😂)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Diferente do bolo da vitrine, aonde os garotos só imaginavam estar comendo o bolo, aqui, ele foi comigo, ou seja, não existe mais aquele pedaço, porem, se vocês prestaram atenção na história, o Pedro, comeu um pedaço e sua avó, mandou ele colocar o outro no lugar, pra fazer isso, usaremos o &lt;strong&gt;Splice&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boloInteiro&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pegandoDoisPedacos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boloInteiro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;splice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pegandoDoisPedacos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// resultado: [1, 2]&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boloInteiro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// resultado: [3, 4, 5, 6, 7, 8, 9, 10]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// devolvendo o segundo pedaço&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Observe que como quero devolver um pedaço, escolho a posição que quero colocar esse pedaço&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// no caso a posição 0, como não quero pegar, informo que não quero andar no array, nesse caso coloco 0&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// e por fim, devolvo o pedaço número 2.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// array.splice(posição da faca, quantos pedaços corta, ...infinitos pedaços no lugar se quiser)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;boloInteiro&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;splice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prefiroDoMeio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// resultado: [2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E aí, pegou o esquema? Mais complicado? Falando tecnicamente.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Nota técnica&lt;/strong&gt;:&lt;/p&gt;
+
+  &lt;p&gt;O método splice() altera o conteúdo de uma lista, adicionando novos elementos enquanto remove elementos antigos.&lt;/p&gt;
+
+  &lt;p&gt;Assinatura:&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  array.splice(indice[, deleteCount[, elemento1[, ...[, elementoN]]])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;p&gt;Traduzindo:&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  bolo.pedacos(posição da faca, quantos pedaços cortar, ...infinitos pedaços para colocar no lugar se quiser)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/splice&quot; targe=&quot;\_blank&quot;&gt;Array.prototype.splice()&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;breaker&quot;&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;os-finalmentes&quot;&gt;Os Finalmentes&lt;/h2&gt;
+
+&lt;p&gt;O método &lt;strong&gt;Slice&lt;/strong&gt; é usado para consultar posições de um Array, trazer uma determinada parte dele, sem modificá-lo, já com o &lt;strong&gt;Splice&lt;/strong&gt;, você remove os elementos de uma determinada posição de Array, com a possibilidade de colocar outros no lugar, ambos os métodos, retornam as posições manipuladas. As funcionalidades de ambos, são realmente parecidas, mas como costumo repetir: &lt;em&gt;Parecido não é igual&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;É isso, espero ter ajudado, e finalmente você tenha entendido essa diferença, qualquer coisa estou a disposição, deixe seu comentário, compartilhe com seus amigos, e vejo vocês no próximo post.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Tchau e Bença!!!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Trocando de carreira. Como saí da área comercial e me tornei um desenvolvedor.</title>
+   <link href="https://ldwsolucoesinteligentes.com.br/blog/trocando-de-carreira-como-sai-da-area-comercial-e-me-tornei-um-desenvolvedor/"/>
+   <updated>2019-02-25T00:00:00-03:00</updated>
+   <id>https://ldwsolucoesinteligentes.com.br/blog/trocando-de-carreira-como-sai-da-area-comercial-e-me-tornei-um-desenvolvedor</id>
+   <content type="html">&lt;p&gt;Um pouco de história…&lt;/p&gt;
+
+&lt;p&gt;Em meados de 2011, anida na carreira comercial, trabalhava na área de vendas em uma empresa chamada &lt;strong&gt;Dinânimca Sistemas&lt;/strong&gt; (adquirida pela AlterData anos depois), posso dizer que adquiri grande conhecimento tanto do mercado de Departamento pessoal, quanto de como não fazer algumas coisas, mas isso já é história para outro post. 😝
+Foi um momento marcante da minha vida, minha filha havia nascido &lt;em&gt;(Louyse 15/02/11)&lt;/em&gt;, o mercado de vendas sempre teve altos e baixo, meses com comissões elevadas e outros nem tanto ou nenhuma, e em outrora, já tinha tentado mudar de área mas sem sucesso. Iniciei a graduação em Administração e não me adaptei, mudei para Contabilidade, pois sempre gostei muito de dinheiro (quem nunca! 😁), porém contabilizar o dinheiro de terceiros não era meu objetivo.&lt;/p&gt;
+
+&lt;p&gt;Foi nessa época que conheci meu amigo e mentor &lt;strong&gt;Leonardo Jaques&lt;/strong&gt;, o &lt;a href=&quot;https://www.linkedin.com/in/leonardojaquesprojetos/&quot;&gt;Léo&lt;/a&gt;, agradeço a ele sempre, pelo que sou hoje e pelos conselhos tão valiosos, que me dera na época e que ainda me acompanham para a vida, &lt;strong&gt;Obrigado! Conte comigo sempre!&lt;/strong&gt; Ele descobriu e lapidou um talento, que até então, eu desconhecia, a programação. Era comum naquela época, não sei se ainda é assim, as empresas não terem softwares robustos para área comercial/vendas, as vezes não tinham nenhum, como era o caso desta empresa, de cara já descobri uma das qualidades que todo o programador deve ter, &lt;strong&gt;Preguiça&lt;/strong&gt;. Ao me deparar com aquele arquivo de pastas suspensas, logo indaguei - &lt;em&gt;“Sem condições de procurar histórico de vendas e relacionamento com o cliente nessa papelada”&lt;/em&gt;, foi quando tudo começou de fato.&lt;/p&gt;
+
+&lt;p&gt;Me reuni com o &lt;em&gt;“O cara do marketing e Gerenciamento de projetos”&lt;/em&gt;, Leonardo Jaques, traçamos planos para melhorar a estratégia de vendas e marketing da empresa e logo entramos em acordo que deveríamos começar com a automação e/ou digitalização do processo, foi quando citei que trabalhava muito bem com excel e inclusive, fazia algumas planilhas dinâmicas com macros e VBA, sim o &lt;strong&gt;VBA&lt;/strong&gt;, acho que a descoberta do Léo veio aí, não sei, depois ele comenta aí e me confirma. Pra quem não sabe, &lt;span class=&quot;evidence&quot;&gt;&lt;em&gt;“O Visual Basic for Applications (VBA) é uma implementação do Visual Basic da Microsoft incorporada em todos os programas do Microsoft Office - dentro desse pacote estão os famosos aplicativos Office (Word, Excel, Power Point, Access, etc), bem como em outras aplicações da Microsoft, como o Visio, e que foi também incorporada pelo menos parcialmente em outros programas de terceiros como o AutoCAD, Mathcad e WordPerfect.”&lt;/em&gt; &lt;a href=&quot;https://pt.wikipedia.org/wiki/Visual_Basic_for_Applications&quot;&gt;Wikipédia&lt;/a&gt;&lt;/span&gt;
+Começava aí então nossa jornada de desbravamento, era uma “Mata fechada”, muito caminho para se abrir, com “Facões cegos”, lembro que decidimos mudar a estratégia de vendas, até porque, havíamos sido contratados para aumentar os ganhos da empresa, começamos então por entender os clientes, organizar a casa, e desenvolver uma forma de capitalizar mais a carteira de negócios .&lt;/p&gt;
+
+&lt;p&gt;Naquela época, se bem me lembro, o Léo, estava cursando seu MBA em gerenciamento de projetos, e para que vocês, leitores, entendam como foi tudo coincidentemente se encaixando, ele decidiu por em prática o que estava aprendendo e me chamou para nos aventurarmos a criar um sistema de vendas, para melhorar nosso processo, e não sei se comentei, trabalhávamos em uma software house, e estávamos prestes a criar um sistema em paralelo, que no fim criamos, usando de recursos limitados, pois não era nossa área, então não poderíamos solicitar os recurso para o mesmo, e o meu singelo e recém descoberto, talento para programação.
+E como não poderia deixar de fazer a tão merecida homenagem, o desejado sistema se chamaria &lt;strong&gt;Louyse Automação Comercial&lt;/strong&gt;, criado basicamente com &lt;em&gt;VBA&lt;/em&gt; como linguagem de programação, &lt;em&gt;Microsoft Access&lt;/em&gt; como banco de dados e claro não posso deixar de citar aqui, um site repleto de material que me ajudou bastante na época &lt;a href=&quot;https://www.usandoaccess.com.br/&quot;&gt;Usando Access&lt;/a&gt;, grande &lt;em&gt;Avelino Sampaio&lt;/em&gt;, use o pacote &lt;em&gt;Monta Ribbons&lt;/em&gt; para estilizar nosso sistema, grandes aprendizados 😄&lt;/p&gt;
+
+&lt;p&gt;Foi ali meu primeiro contatos com &lt;strong&gt;Scrum&lt;/strong&gt;, sim, como falei, Léo já vinha “imputando” as boas praticas de projeto que havia aprendido, olha a foto do nosso primeiro quadro Kanban, com direito a Burn Down e tudo 😉
+Obrigado mais uma vez meu amigo, por eternizar esse momento. Foto tirada com o grande guerreiro, Nokia C3.&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;&lt;img src=&quot;/public/images/posts/louyse-automacao-comercial-1.jpg&quot; alt=&quot;Foto do quadro Kanban, projeto Louyse Automação Comercial v1.0, com Burn down e tarefas, 14 de fevereiro de 2012&quot; title=&quot;Foto do quadro Kanban, projeto Louyse Automação Comercial v1.0, com Burn down e tarefas, 14 de fevereiro de 2012&quot; /&gt;
+Foto do quadro Kanban, projeto Louyse Automação Comercial v1.0, com Burn down e tarefas, 14 de fevereiro de 2012&lt;/p&gt;
+
+&lt;p&gt;A partir daí, muita coisa mudou, melhoramos realmente o processo de vendas, causamos algumas intrigas, ao sermos descobertos pelo gerente de desenvolvimento, &lt;em&gt;apesar dele não entender, no inicio, do que se tratava aquele quadro cheio de post its e gráficos&lt;/em&gt;, o sistema deu certo e ele começou a se preocupar como seria a manutenção do mesmo, caso fosse preciso. Usávamos a rede para armazenar o “código fonte” e compartilhar o “banco de dados”, nos perdoem pois éramos iniciantes, em contrapartida, o diretor ficou satisfeito com a eficiência na geração de relatórios de vendas, mesmo sem saber até hoje, como eram gerados tão rápidos e com tão boa aparência. Conseguimos unificar o telemarketing, a assistente comercial e o marketing, melhorando o desempenho das minhas visitas comerciais e acabando com a paz do galera de desenvolvimento de verdade 😂 que alias, não comentei que trabalhavam com Delphi 4 se não me falha a memória, com banco de dados “Paradox”, que sem querer, descobrimos que dava pra importar todo ele no Access, top da segurança hein 😝.&lt;/p&gt;
+
+&lt;p&gt;E lembro bem, quando de fato, arrancamos os cabelos do gerente de desenvolvimento, quando descobrimos que havia um desejo, um pensamento…, &lt;span class=&quot;evidence&quot;&gt;&lt;em&gt;um nota: Hoje entendo o sofrimento da galera do desenvolvimento, mas naquela época, ainda era 100% comercial, então amigos, amigos, negócios a parte&lt;/em&gt;…&lt;/span&gt;, de migrar o banco de dados para MS SQL 2005, coisa linda! Era o gancho que precisava para vender, e vendi, anunciei ao quatro cantos que estávamos lançando uma versão, mas moderna e segura do sistema e já estava em pré-venda e/ou upgrade, os clientes amaram e o setor de desenvolvimento, pirooooou!!!&lt;/p&gt;
+
+&lt;p&gt;Em resumo, entrei para a faculdade de &lt;em&gt;Analise e Desenvolvimento de Sistemas&lt;/em&gt; em agosto de 2012, na Unicarioca, consegui um estágio por intermédio do até então &lt;em&gt;Garoto do TI&lt;/em&gt;, que hoje também é um grande Amigo meu, &lt;a href=&quot;https://www.linkedin.com/in/luan-santos-42007069/&quot;&gt;Luan Santos, vulgo Santana&lt;/a&gt;, obrigado por tudo Santana, e o restante, vou contando aos poucos o que mudou de lá pra cá, em posts futuros.&lt;/p&gt;
+
+&lt;p&gt;Tá aí um pouco das minhas histórias e espero compartilhá-las ainda mais com vocês, com o tempo, minha pretensão e de conseguir fazer publicações, pelo menos, 3 vezes por semana, com temas variádos entre, &lt;strong&gt;Carreira, desenvolvimento de software, cotidiano e algumas fatos relevantes do dia a dia de um programador&lt;/strong&gt;. Esse é meu primeiro de muitos posts, tentei ser o mais breve possível, para dar uma introdução de como foi minha transição de Gerente comercial a Desenvolvedor, espero que tenham gostado, fiquem a vontade para comentar, compartilhar e qualquer dúvida, estarei sempre disponível para responder, minhas redes sociais e email estão sempre disponíveis.&lt;/p&gt;
+
+&lt;p&gt;Um forte abraço e sucesso!!!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Aplicativo Motel Comanche</title>
+   <link href="https://ldwsolucoesinteligentes.com.br/blog/aplicativo-motel-comanche/"/>
+   <updated>2018-08-14T00:00:00-03:00</updated>
+   <id>https://ldwsolucoesinteligentes.com.br/blog/aplicativo-motel-comanche</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Site Leandro e Aline Araújo</title>
+   <link href="https://ldwsolucoesinteligentes.com.br/blog/site-leandro-e-aline-araujo/"/>
+   <updated>2018-01-01T00:00:00-02:00</updated>
+   <id>https://ldwsolucoesinteligentes.com.br/blog/site-leandro-e-aline-araujo</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Plataforma de Redes Sociais Plah!</title>
+   <link href="https://ldwsolucoesinteligentes.com.br/blog/plataforma-de-redes-sociais-plah/"/>
+   <updated>2017-08-01T00:00:00-03:00</updated>
+   <id>https://ldwsolucoesinteligentes.com.br/blog/plataforma-de-redes-sociais-plah</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Clube do Advogado, Sistema Hórus</title>
+   <link href="https://ldwsolucoesinteligentes.com.br/blog/projeto-clube-do-advogado-e-horus/"/>
+   <updated>2015-06-01T00:00:00-03:00</updated>
+   <id>https://ldwsolucoesinteligentes.com.br/blog/projeto-clube-do-advogado-e-horus</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Aplicativo Hórus, Escritório de Advogacia na palma da mão</title>
+   <link href="https://ldwsolucoesinteligentes.com.br/blog/aplicativo-horus/"/>
+   <updated>2015-06-01T00:00:00-03:00</updated>
+   <id>https://ldwsolucoesinteligentes.com.br/blog/aplicativo-horus</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+
+</feed>

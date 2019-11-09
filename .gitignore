@@ -284,7 +284,7 @@ typings/
 
 # End of https://www.gitignore.io/api/sass,ruby,jekyll,webstorm,visualstudiocode
 
-_site
+#_site
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
