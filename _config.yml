@@ -1,7 +1,7 @@
 # Setup
 title: LDW
 tagline: 'Alex Leko'
-description: 'O melhor do desenvolvimento web, mobile e gerenciamento de mídias sociais. <a href="mailto:lekodeveloperweb@hotmail.com" target="_blank">@alexleko</a>'
+description: O melhor do desenvolvimento web, mobile e gerenciamento de mídias sociais.
 url: https://ldwsolucoesinteligentes.com.br
 baseurl: /
 read_time: true
@@ -46,6 +46,9 @@ permalink: /blog/:title/
 # To enable google analytics, supply your token below
 analytics_google: 'UA-135069212-1'
 
+# not build future post
+future: false
+
 # if you don't want comments in your posts, leave categories empty
 disqus:
     shortname: LDWSolucoesInteligentes # enter this from your disqus account
@@ -53,12 +56,9 @@ disqus:
 
 # if you don't have any of social below, comment the line
 twitter: LekoDeveloper
-twitter_icon: public/images/icons/twitter.png
 facebook: ldwsolucoesinteligentes
-facebook_icon: public/images/icons/facebook.png
 instagram: ldwsolucoesinteligentes
 linkedin: lekodeveloperweb
-linkedin_icon: public/images/icons/linkedin.png
 spotify: lekodeveloperweb
 github: ldwsolucoesinteligentes
 gitlab: lekodeveloperweb
@@ -75,9 +75,12 @@ github:
 
 # Build settings
 plugins:
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-seo-tag
+    - jekyll-seo-tag
+    - jekyll-gist
+    - jekyll-feed
+    - jemoji
+    - jekyll-admin
+    - jekyll-paginate
 
 # Exclude from processing.
 # The following items will not be processed, by default.
