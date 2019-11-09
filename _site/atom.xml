@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>LDW</title>
- <link href="https://ldwsolucoesinteligentes.com.br/atom.xml" rel="self"/>
- <link href="https://ldwsolucoesinteligentes.com.br/"/>
- <updated>2019-11-09T18:29:28-03:00</updated>
- <id>https://ldwsolucoesinteligentes.com.br</id>
+ <title>LDW Soluções Inteligentes</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2019-11-09T18:55:54-03:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name></name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Fluent Validation .NET - Implementando com Typescript</title>
-   <link href="https://ldwsolucoesinteligentes.com.br/blog/fluent-validation-implementando-com-typescript/"/>
+   <link href="http://localhost:4000/blog/fluent-validation-implementando-com-typescript/"/>
    <updated>2019-04-01T22:00:00-03:00</updated>
-   <id>https://ldwsolucoesinteligentes.com.br/blog/fluent-validation-implementando-com-typescript</id>
+   <id>http://localhost:4000/blog/fluent-validation-implementando-com-typescript</id>
    <content type="html">&lt;p&gt;Não sei se todos sabem, mas iniciei a minha carreira de programação com a &lt;strong&gt;linguagem C#&lt;/strong&gt;, da Microsoft, a qual sou apaixonado até hoje, apesar de também programar em outras linguagens. E na comunidade .NET em geral, existe uma biblioteca muito conhecida para validação, é a:&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -130,9 +130,9 @@ Começaremos com as classes &lt;code class=&quot;highlighter-rouge&quot;&gt;Vali
  
  <entry>
    <title>Entendendo de uma vez por todas a diferença entre slice e splice em arrays javascript, um guia definitivo.</title>
-   <link href="https://ldwsolucoesinteligentes.com.br/blog/entendendo-de-uma-vez-por-todas-a-diferenca-entre-slice-e-splice-em-arrays-javascript-um-guia-definitivo/"/>
+   <link href="http://localhost:4000/blog/entendendo-de-uma-vez-por-todas-a-diferenca-entre-slice-e-splice-em-arrays-javascript-um-guia-definitivo/"/>
    <updated>2019-03-02T14:00:00-03:00</updated>
-   <id>https://ldwsolucoesinteligentes.com.br/blog/entendendo-de-uma-vez-por-todas-a-diferenca-entre-slice-e-splice-em-arrays-javascript-um-guia-definitivo</id>
+   <id>http://localhost:4000/blog/entendendo-de-uma-vez-por-todas-a-diferenca-entre-slice-e-splice-em-arrays-javascript-um-guia-definitivo</id>
    <content type="html">&lt;p&gt;Fala galera!!! Olha eu aqui de novo. O assunto que vamos discutir hoje, não é novo, e nem de longe complexo, mas ainda causa bastante confusão. Eu mesmo no inicio me confundia bastante, e quero hoje, te ajudar a nunca mais errar a diferença entre &lt;code class=&quot;highlighter-rouge&quot;&gt;slice&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;splice&lt;/code&gt;, creio que a própria entonação da pronuncia já faz com que nossa mente se engane. Traduzindo ao pé da letra, &lt;strong&gt;Slice&lt;/strong&gt; é uma &lt;em&gt;fatia&lt;/em&gt;, um &lt;em&gt;pedaço&lt;/em&gt; de algo, já &lt;strong&gt;Splice&lt;/strong&gt; é &lt;em&gt;emenda&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Tendo isso em mente, vamos contar uma história que defina de um jeito que não vamos esquecer:&lt;/p&gt;
@@ -255,9 +255,9 @@ sua avó o pegou no flagra, e disse: - larga de ser olho grande menino! Pode &lt
  
  <entry>
    <title>Trocando de carreira. Como saí da área comercial e me tornei um desenvolvedor.</title>
-   <link href="https://ldwsolucoesinteligentes.com.br/blog/trocando-de-carreira-como-sai-da-area-comercial-e-me-tornei-um-desenvolvedor/"/>
+   <link href="http://localhost:4000/blog/trocando-de-carreira-como-sai-da-area-comercial-e-me-tornei-um-desenvolvedor/"/>
    <updated>2019-02-25T00:00:00-03:00</updated>
-   <id>https://ldwsolucoesinteligentes.com.br/blog/trocando-de-carreira-como-sai-da-area-comercial-e-me-tornei-um-desenvolvedor</id>
+   <id>http://localhost:4000/blog/trocando-de-carreira-como-sai-da-area-comercial-e-me-tornei-um-desenvolvedor</id>
    <content type="html">&lt;p&gt;Um pouco de história…&lt;/p&gt;
 
 &lt;p&gt;Em meados de 2011, anida na carreira comercial, trabalhava na área de vendas em uma empresa chamada &lt;strong&gt;Dinânimca Sistemas&lt;/strong&gt; (adquirida pela AlterData anos depois), posso dizer que adquiri grande conhecimento tanto do mercado de Departamento pessoal, quanto de como não fazer algumas coisas, mas isso já é história para outro post. 😝
@@ -291,45 +291,45 @@ Foto do quadro Kanban, projeto Louyse Automação Comercial v1.0, com Burn down 
  
  <entry>
    <title>Aplicativo Motel Comanche</title>
-   <link href="https://ldwsolucoesinteligentes.com.br/blog/aplicativo-motel-comanche/"/>
+   <link href="http://localhost:4000/blog/aplicativo-motel-comanche/"/>
    <updated>2018-08-14T00:00:00-03:00</updated>
-   <id>https://ldwsolucoesinteligentes.com.br/blog/aplicativo-motel-comanche</id>
+   <id>http://localhost:4000/blog/aplicativo-motel-comanche</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
    <title>Site Leandro e Aline Araújo</title>
-   <link href="https://ldwsolucoesinteligentes.com.br/blog/site-leandro-e-aline-araujo/"/>
+   <link href="http://localhost:4000/blog/site-leandro-e-aline-araujo/"/>
    <updated>2018-01-01T00:00:00-02:00</updated>
-   <id>https://ldwsolucoesinteligentes.com.br/blog/site-leandro-e-aline-araujo</id>
+   <id>http://localhost:4000/blog/site-leandro-e-aline-araujo</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
    <title>Plataforma de Redes Sociais Plah!</title>
-   <link href="https://ldwsolucoesinteligentes.com.br/blog/plataforma-de-redes-sociais-plah/"/>
+   <link href="http://localhost:4000/blog/plataforma-de-redes-sociais-plah/"/>
    <updated>2017-08-01T00:00:00-03:00</updated>
-   <id>https://ldwsolucoesinteligentes.com.br/blog/plataforma-de-redes-sociais-plah</id>
+   <id>http://localhost:4000/blog/plataforma-de-redes-sociais-plah</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
    <title>Clube do Advogado, Sistema Hórus</title>
-   <link href="https://ldwsolucoesinteligentes.com.br/blog/projeto-clube-do-advogado-e-horus/"/>
+   <link href="http://localhost:4000/blog/projeto-clube-do-advogado-e-horus/"/>
    <updated>2015-06-01T00:00:00-03:00</updated>
-   <id>https://ldwsolucoesinteligentes.com.br/blog/projeto-clube-do-advogado-e-horus</id>
+   <id>http://localhost:4000/blog/projeto-clube-do-advogado-e-horus</id>
    <content type="html">
 </content>
  </entry>
  
  <entry>
    <title>Aplicativo Hórus, Escritório de Advogacia na palma da mão</title>
-   <link href="https://ldwsolucoesinteligentes.com.br/blog/aplicativo-horus/"/>
+   <link href="http://localhost:4000/blog/aplicativo-horus/"/>
    <updated>2015-06-01T00:00:00-03:00</updated>
-   <id>https://ldwsolucoesinteligentes.com.br/blog/aplicativo-horus</id>
+   <id>http://localhost:4000/blog/aplicativo-horus</id>
    <content type="html">
 </content>
  </entry>

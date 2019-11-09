@@ -1,6 +1,6 @@
 # Setup
-title: LDW
-tagline: 'Alex Leko'
+title: LDW Soluções Inteligentes
+tagline: Alex Leko
 description: O melhor do desenvolvimento web, mobile e gerenciamento de mídias sociais.
 url: https://ldwsolucoesinteligentes.com.br
 baseurl: /
@@ -65,6 +65,10 @@ gitlab: lekodeveloperweb
 reddit: lekodeveloperweb
 medium: lekodeveloperweb
 email: lekodeveloperweb@hotmail.com
+
+twitter:
+    username: LekoDeveloper
+    card: Desenvolvedor Web, Apaixonado por tecnologia. Trabalhando com as linguagens C#, NodeJS, Python, GoLang e frameworks Angular, VueJS e Reactjs.
 
 
 # Custom vars
