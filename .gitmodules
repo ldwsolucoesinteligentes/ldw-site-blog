@@ -1,3 +1,4 @@
 [submodule "_posts"]
 	path = _posts
+	branch = master
 	url = git@github.com:ldwsolucoesinteligentes/_posts.git
