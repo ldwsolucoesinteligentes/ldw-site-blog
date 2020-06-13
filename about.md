@@ -4,7 +4,7 @@ layout: page
 author: alexleko
 ---
 
-![Profile Image]({{ site.baseurl }}{{ site.authors[page.author].picture }}){:.image-profile} Eu sou **Alex Leko** (**L**eko**D**eveloper**W**eb), desenvolvedor Full Stack; Geek, pai da Louyse e marido da Jéssica, carioca da gema, desde 2012 no mercado desenvolvimento web e mobile. Formado em Análise de Sistemas, MCSD - Microsoft Solution Developer, atualmente a frente da consultoria **LDW Soluções Inteligentes**, estou sempre pronto a encarar novos desafios.
+![Profile Image]({{ site.baseurl }}{{ site.authors[page.author].picture }}){:.image-profile} Eu sou **Alex Leko** (**L**eko**D**eveloper**W**eb), desenvolvedor Full Stack; Geek, pai da Louyse e marido da Jéssica, carioca da gema, desde 2012 no mercado desenvolvimento web e mobile. Formado em Análise de Sistemas, MCSD - Microsoft Solution Developer, atualmente trabalhando como **Arquiteto de Soluções Mobile** no mercado elétrico, estou sempre pronto a encarar novos desafios.
 Meu perfil completo no [LinkedIn]({{site.resume_url}}){:target="\_blank"}
 
 {:.clearfix}
@@ -24,9 +24,9 @@ Meu perfil completo no [LinkedIn]({{site.resume_url}}){:target="\_blank"}
 - Grunt - Gulp - Yeoman - Webpack
 - Git - Github - Gitlab
 - .NET - C# - VB.NET - DotNet Core
-- Python (Flask)
+- Python (Flask/Web Scrapping)
 - GoLang
 - Jekyll - Ruby
 - Postgress - MySQL - SQL Server - Redis - MongoDB
 - Scrum e Kanban
-- Docker e Continuous Integration
+- Docker, Kubernetes e Continuous Integration

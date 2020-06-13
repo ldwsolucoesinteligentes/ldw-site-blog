@@ -1,8 +1,8 @@
 # Setup
-title: LDW Soluções Inteligentes
+title: LekoDeveloperWeb
 tagline: Alex Leko
-description: O melhor do desenvolvimento web, mobile e gerenciamento de mídias sociais.
-url: https://ldwsolucoesinteligentes.com.br
+description: Desenvolvimento web, mobile, aventuras no mundo corporativo e muito aprendizado.
+url: https://lekodeveloperweb.github.io
 baseurl: /
 read_time: true
 
@@ -10,7 +10,7 @@ social:
     name: Alex Leko
     links:
         - https://twitter.com/LekoDeveloper
-        - https://www.facebook.com/ldwsolucoesinteligentes
+        - https://www.facebook.com/lekooficial
         - https://www.linkedin.com/in/lekodeveloperweb
         - https://github.com/lekowebdeveloper
 lang: pt_BR
@@ -27,7 +27,7 @@ paginate: 5
 paginate_path: '/blog/page:num/'
 
 # post description
-share_description: Um blog com o melhor do desenvolvimento web, mobile, e gerenciamento de mídias sociais.
+share_description: Um blog com o melhor do desenvolvimento web, mobile, e muito aprendizado.
 
 # if it's an external image, update below for true
 # better with square images
@@ -39,7 +39,7 @@ picture: public/images/profile.jpg
 # and specify source (external or local).
 resume_url: https://www.linkedin.com/in/lekodeveloperweb/
 
-url: https://ldwsolucoesinteligentes.com.br
+url: https://lekodeveloperweb.github.io
 
 permalink: /blog/:title/
 
@@ -56,11 +56,11 @@ disqus:
 
 # if you don't have any of social below, comment the line
 twitter: LekoDeveloper
-facebook: ldwsolucoesinteligentes
-instagram: ldwsolucoesinteligentes
+facebook: lekooficial
+instagram: alexleko
 linkedin: lekodeveloperweb
 spotify: lekodeveloperweb
-github: ldwsolucoesinteligentes
+github: lekodeveloperweb
 gitlab: lekodeveloperweb
 reddit: lekodeveloperweb
 medium: lekodeveloperweb
@@ -75,7 +75,7 @@ twitter:
 version: 2.0.0
 
 github:
-  repo: https://github.com/ldwsolucoesinteligentes
+  repo: https://github.com/lekodeveloperweb
 
 # Build settings
 plugins:

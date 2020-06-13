@@ -2,6 +2,6 @@ url: http://localhost:4000
 baseurl: /
 
 paginate: 5
-paginate_path: '/blog/page:num/'
+paginate_path: "/blog/page:num/"
 
 read_time: true
